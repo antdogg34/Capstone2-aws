@@ -1,7 +1,7 @@
-FROM node:11-alpine
+FROM nginx
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-COPY . .
+COPY ./usr/sharenginx.html
 RUN npm install
-EXPOSE 3000:3000
-CMD ["npm", "run", "start"]
+EXPOSE 80:80
+CMD ["nginx", "-g", "daemon off;"]
